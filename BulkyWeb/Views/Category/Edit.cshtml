@@ -1,0 +1,53 @@
+﻿@model Category
+
+<form method="post">
+    <input asp-for="Id" hidden />
+    @*<input asp-for="Id" hidden /> this is req 
+        when we don not want new entry get added insted of 
+        updation
+    *@
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">
+                Edit
+                Category
+            </h2>
+            <hr />
+        </div>
+        <!--asp-validation-summary =
+            All => shows every error
+            ModelOnly => shows for "" where Name are not methion
+            None => for noone
+        -->
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="DisplayOrder"></label>
+            <input asp-for="DisplayOrder" class="form-control" />
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-success"
+                        style="width:150px">
+                    Edit
+                </button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Category" asp-action="Index" class="btn btn-secondary" style="width:150px">
+                    Back To List
+                </a>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
